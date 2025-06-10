@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesaya Studio - Abadikan Momenmu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Gaya untuk Hero Section yang Diperbarui */
+        .hero-section-adjusted {
+            height: 100vh; 
+            background-size: cover;
+            background-position: center; /* Default untuk mobile, fokus ke tengah wajah */
+            position: relative; 
+        }
+        .hero-overlay-adjusted {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay default untuk mobile */
+        }
+        .hero-content-wrapper { 
+            position: relative;
+            z-index: 10;
+            color: white; 
+            height: 100%; 
+            width: 100%;
+            display: flex;
+            /* Mobile: Konten di bawah, tengah horizontal */
+            flex-direction: column;
+            justify-content: flex-end; /* Konten ke bawah */
+            align-items: center; /* Konten ke tengah horizontal */
+            padding-bottom: 4rem; /* Jarak dari bawah untuk mobile */
+            text-align: center;
+        }
+
+        @media (min-width: 768px) { /* md breakpoint Tailwind - untuk Desktop */
+            .hero-section-adjusted {
+                /* Fokus ke sisi kanan gambar, agar subjek (fotografer) di kanan tetap terlihat saat teks di kiri */
+                background-position: center right; 
+            }
+            .hero-overlay-adjusted {
+                /* Gradien overlay untuk desktop, lebih gelap di kiri tempat teks */
+                background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.0) 70%, rgba(0,0,0,0) 100%);
+            }
+            .hero-content-wrapper {
+                /* Desktop: Konten di kiri, tengah vertikal */
+                flex-direction: row; 
+                justify-content: flex-start; 
+                align-items: center; 
+                padding-bottom: 0; 
+                text-align: left;
+            }
+        }
+
+        .package-card, .testimonial-card, .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .package-card:hover, .testimonial-card:hover, .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .gallery-item img {
+            aspect-ratio: 1/1; 
+            object-fit: cover; 
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .navbar-logo-img {
+            height: 30px; 
+            margin-right: 8px; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-gray-900 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="images/LOGO-KESAYA.png" alt="Logo Kesaya Studio" class="navbar-logo-img">
+                <span class="text-2xl font-bold text-amber-400 hover:text-amber-300">KESAYA STUDIO</span>
+            </a>
+            <div class="hidden md:flex space-x-4">
+                <a href="#beranda" class="text-gray-300 hover:text-white">Beranda</a>
+                <a href="#tentang-kami" class="text-gray-300 hover:text-white">Tentang Kami</a>
+                <a href="#layanan-kami" class="text-gray-300 hover:text-white">Layanan Kami</a>
+                <a href="#portofolio" class="text-gray-300 hover:text-white">Portofolio</a>
+                <a href="#paket" class="text-gray-300 hover:text-white">Paket</a>
+                <a href="#testimoni" class="text-gray-300 hover:text-white">Testimoni</a>
+                <a href="#hubungi-kami" class="text-gray-300 hover:text-white">Hubungi Kami</a>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="text-gray-300 hover:text-white" aria-label="Instagram Kesaya Studio">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
+                <a href="https://wa.me/6285235541965" target="_blank" class="text-gray-300 hover:text-white" aria-label="WhatsApp Kesaya Studio">
+                    <i class="fab fa-whatsapp fa-lg"></i>
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 shadow-lg">
+            <a href="#beranda" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Beranda</a>
+            <a href="#tentang-kami" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Tentang Kami</a>
+            <a href="#layanan-kami" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Layanan Kami</a>
+            <a href="#portofolio" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Portofolio</a>
+            <a href="#paket" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Paket</a>
+            <a href="#testimoni" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Testimoni</a>
+            <a href="#hubungi-kami" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Hubungi Kami</a>
+        </div>
+    </nav>
+
+    <section id="beranda" 
+        class="hero-section-adjusted" 
+        style="background-image: url('images/DSC09397.jpg');">
+        <div class="hero-overlay-adjusted"></div>
+        <div class="container mx-auto px-6 hero-content-wrapper"> 
+            <div class="w-full md:w-1/2 lg:w-2/5"> 
+                <h1 class="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 uppercase tracking-wide">
+                    Abadikan Momen Berhargamu<br>Bersama Kami
+                </h1>
+                <p class="text-base sm:text-lg md:text-lg text-gray-200 mb-6">
+                    Fotografi & Videografi Profesional
+                </p>
+                <a href="#layanan-kami" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-6 md:py-3 md:px-8 rounded-lg text-sm md:text-base transition duration-300 inline-block shadow-lg">
+                    LIHAT LAYANAN
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="tentang-kami" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-amber-600">Tentang Kami</h2>
+            <div class="max-w-3xl mx-auto text-lg text-gray-700 space-y-4">
+                <p>Kesaya studio adalah rumah kreatif dibidang fotografi dan vidiografi yang berfokus pada keindahan moment, ekspresi, dan cerita.</p>
+                <p>Dengan semangat untuk menghadirkan karya visual yang autentik dan estetik, kami melayani berbagai kebutuhan dokumentasi, mulai dari personal hingga komersial.</p>
+                <p>Kami percaya bahwa setiap momen memiliki cerita. Tugas kami adalah menangkapnya dengan sudut pandang yang berbeda, penuh rasa, dan kualitas visual yang memukau.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="layanan-kami" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-amber-600">Layanan Kami</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-2xl mx-auto">Kami siap mendokumentasikan momen berharga Anda, mulai dari acara spesial seperti pernikahan dan lamaran, hingga kebutuhan personal dan komersial.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center package-card">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-camera-retro fa-3x"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Fotografi</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>Prewedding dan wedding</li>
+                        <li>Potrait (personal, keluarga, wisuda)</li>
+                        <li>Foto produk dan komersial</li>
+                        <li>Event dan dokumentasi acara</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center package-card">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-video fa-3x"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Videografi</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>Cinematik wedding dan prewedding</li>
+                        <li>Video produk dan branding</li>
+                        <li>Video event dan dokumentasi kegiatan</li>
+                        <li>Company profil dan video campaign</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center package-card">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-edit fa-3x"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Editing dan Produksi</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>Retouching foto profesional</li>
+                        <li>Video editing (highlight, cinematic, reel)</li>
+                        <li>Warna dan suara berkualitas tinggi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-amber-600">Portofolio Kami</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-2xl mx-auto">Lihat beberapa hasil karya terbaik kami. Untuk lebih banyak lagi, kunjungi Instagram kami!</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div class="gallery-item rounded-lg overflow-hidden">
+                    <img src="images/1749023520026.jpg" alt="Portofolio Kesaya Studio 1" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden">
+                    <img src="images/1749023520038.jpg" alt="Portofolio Kesaya Studio 2" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden">
+                    <img src="images/1749023520046.jpg" alt="Portofolio Kesaya Studio 3" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden">
+                    <img src="images/1749023520055.jpg" alt="Portofolio Kesaya Studio 4" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden">
+                    <img src="images/1749023520062.jpg" alt="Portofolio Kesaya Studio 5" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden">
+                    <img src="images/1749023520072.jpg" alt="Portofolio Kesaya Studio 6" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 inline-flex items-center">
+                    <i class="fab fa-instagram mr-2"></i> Lihat Lebih Banyak di Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paket Section - Diperbarui dengan tautan WhatsApp -->
+    <section id="paket" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-amber-600">Paket Spesial Untuk Momen Berhargamu</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="package-list">
+                <!-- Paket akan ditambahkan oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-amber-600">Apa Kata Klien Kami</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Hasil fotonya luar biasa! Tim Kesaya Studio sangat profesional dan ramah. Momen pernikahan kami terabadikan dengan sempurna."</p>
+                    <p class="font-semibold text-amber-600">- Amanda & Rizky</p>
+                    <p class="text-sm text-gray-500">Klien Pernikahan</p>
+                </div>
+                <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Sesi foto wisuda saya jadi sangat berkesan. Fotografernya kreatif dan bisa mengarahkan gaya dengan baik. Recommended!"</p>
+                    <p class="font-semibold text-amber-600">- Budi Santoso</p>
+                    <p class="text-sm text-gray-500">Klien Wisuda</p>
+                </div>
+                <div class="testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Untuk kebutuhan foto produk, Kesaya Studio memberikan hasil yang memuaskan. Detail produk terlihat jelas dan menarik."</p>
+                    <p class="font-semibold text-amber-600">- Cantika (Owner Batik Lestari)</p>
+                    <p class="text-sm text-gray-500">Klien Foto Produk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hubungi-kami" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-8 text-amber-600">Hubungi Kami</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-xl mx-auto">Siap mengabadikan momen spesial Anda bersama Kesaya Studio? Jangan ragu untuk menghubungi kami untuk konsultasi lebih lanjut atau penjadwalan.</p>
+            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg text-center">
+                <p class="text-gray-700 mb-6 text-lg">Klik tombol di bawah untuk langsung terhubung dengan kami melalui WhatsApp:</p>
+                <a href="https://wa.me/6285235541965" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center text-lg">
+                    <i class="fab fa-whatsapp mr-3 fa-lg"></i> Hubungi via WhatsApp
+                </a>
+                <div class="mt-8">
+                    <p class="text-gray-700 mb-2">Temukan kami juga di Instagram:</p>
+                    <p class="text-gray-700"><i class="fab fa-instagram mr-2 text-amber-600"></i> <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="hover:underline">@kesayastudio</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="text-gray-400 hover:text-white mx-2" aria-label="Instagram Kesaya Studio">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                 <a href="https://wa.me/6285235541965" target="_blank" class="text-gray-400 hover:text-white mx-2" aria-label="WhatsApp Kesaya Studio">
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 KESAYA STUDIO. Semua Hak Dilindungi.</p>
+            <p class="text-sm text-gray-500 mt-1">Didesain dengan <i class="fas fa-heart text-red-500"></i> untuk Momen Berharga Anda</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Hero Image Fallback Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.getElementById('beranda');
+            const intendedHeroImageUrl = 'images/DSC09397.jpg'; 
+            const fallbackHeroImageUrl = 'images/fallback.jpg';
+
+            const img = new Image();
+            img.onload = function() {
+                heroSection.style.backgroundImage = `url('${intendedHeroImageUrl}')`;
+                console.log('Gambar hero (' + intendedHeroImageUrl + ') berhasil dimuat dan diterapkan oleh JS.');
+            }
+            img.onerror = function() {
+                heroSection.style.backgroundImage = `url('${fallbackHeroImageUrl}')`;
+                console.error('Error memuat gambar hero utama (' + intendedHeroImageUrl + ') via JS. Menggunakan gambar fallback.');
+            }
+            img.src = intendedHeroImageUrl; 
+        });
+
+        // Data Paket
+        const packages = [
+            {
+                name: "Paket Wedding 1 (Foto & Video)",
+                price: "Rp 1.500.000",
+                photoDetails: [
+                    "Album Wedding 2 Roll (10 Sheet, 90 Foto)",
+                    "Unlimited Shoot",
+                    "All File edit in Google Drive",
+                    "1 Foto+Frame (10R)",
+                    "Garansi File 1 Tahun"
+                ],
+                videoDetails: [
+                    "Video Highlight 1 Menit",
+                    "Video Cinematic 3 Menit"
+                ]
+            },
+            {
+                name: "Paket Engagement 1",
+                price: "Rp 400.000",
+                photoDetails: [
+                    "Album 1 Roll (5 Sheet, 40 Foto)",
+                    "Unlimited Shoot",
+                    "All File edit in Google Drive"
+                ],
+                videoDetails: null
+            },
+            {
+                name: "Paket Engagement 2",
+                price: "Rp 800.000",
+                photoDetails: [
+                    "Album 1 Roll (5 Sheet, 40 Foto)",
+                    "Unlimited Shoot",
+                    "All File edit in Google Drive",
+                    "2 Foto+Frame (10R)"
+                ],
+                videoDetails: [
+                    "Video Cinematic 1-3 Menit"
+                ]
+            },
+            {
+                name: "Paket Wisuda 1",
+                price: "Rp 500.000",
+                details: [ // Menggunakan 'details' generik karena tidak ada pemisahan foto/video
+                    "1 Fotografer",
+                    "1 jam sesi outdoor",
+                    "30+ edited photos",
+                    "Cetak 5 foto 4R",
+                    "Softcopy Google Drive"
+                ]
+            },
+            {
+                name: "Paket Wisuda 2",
+                price: "Rp 850.000",
+                details: [
+                    "1 Fotografer + properti",
+                    "2 jam sesi (indoor + outdoor)",
+                    "50+ edited photos",
+                    "Cetak 10 foto 4R + 1 foto 10R bingkai",
+                    "Softcopy + album mini"
+                ]
+            },
+            {
+                name: "Paket Event 1",
+                price: "Rp 1.000.000",
+                details: [
+                    "1 Fotografer",
+                    "4 jam dokumentasi",
+                    "100+ edited photos",
+                    "File Google Drive",
+                    "1 hari pengerjaan"
+                ]
+            },
+            {
+                name: "Paket Event 2",
+                price: "Rp 2.000.000",
+                details: [
+                    "1 Fotografer & 1 Videografer",
+                    "6 jam dokumentasi",
+                    "Highlight video 2-3 menit",
+                    "150+ edited photos",
+                    "Flashdisk + link Google Drive"
+                ]
+            }
+        ];
+
+        // Fungsi untuk membuat kartu paket dan menambahkannya ke DOM
+        function renderPackages() {
+            const packageListDiv = document.getElementById('package-list');
+            const phoneNumber = "6285235541965"; // Nomor WhatsApp Anda
+
+            packages.forEach(pkg => {
+                let message = `Halo Kesaya Studio,\nSaya tertarik dengan paket berikut:\n\nNama Paket: ${pkg.name}\nHarga: ${pkg.price}\n\nMohon informasinya lebih lanjut. Terima kasih.`;
+                let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+                let detailsHtml = '';
+                if (pkg.photoDetails) {
+                    detailsHtml += `<div class="mb-2"><h4 class="font-semibold text-gray-700">Foto:</h4><ul class="list-disc list-inside text-gray-600 text-sm">${pkg.photoDetails.map(detail => `<li>${detail}</li>`).join('')}</ul></div>`;
+                }
+                if (pkg.videoDetails) {
+                    detailsHtml += `<div><h4 class="font-semibold text-gray-700">Video:</h4><ul class="list-disc list-inside text-gray-600 text-sm">${pkg.videoDetails.map(detail => `<li>${detail}</li>`).join('')}</ul></div>`;
+                }
+                if (pkg.details && !pkg.photoDetails && !pkg.videoDetails) { // Untuk paket yang tidak memisahkan foto/video
+                     detailsHtml += `<ul class="list-disc list-inside text-gray-600 text-sm">${pkg.details.map(detail => `<li>${detail}</li>`).join('')}</ul>`;
+                }
+
+
+                const packageCardHtml = `
+                    <a href="${whatsappLink}" target="_blank" class="block border border-gray-200 rounded-lg p-6 package-card bg-white hover:bg-amber-50 cursor-pointer">
+                        <h3 class="text-2xl font-semibold mb-3 text-amber-600">${pkg.name}</h3>
+                        <p class="text-3xl font-bold mb-4">${pkg.price}</p>
+                        ${detailsHtml}
+                        <div class="mt-4 text-center">
+                            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-green-500 text-white">
+                                <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
+                            </span>
+                        </div>
+                    </a>
+                `;
+                packageListDiv.innerHTML += packageCardHtml;
+            });
+        }
+
+        // Panggil fungsi untuk merender paket saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', renderPackages);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+/* Custom CSS untuk Kesaya Studio */
+
+/* Definisikan variabel CSS untuk warna baru */
+:root {
+    --color-terracotta: rgb(210, 105, 30); /* Contoh Terakota */
+    --color-burnt-orange: rgb(204, 85, 0); /* Contoh Oranye Kemerahan */
+    --color-mustard-gold: rgb(197, 149, 0); /* Contoh Kuning Mustard/Emas Tua */
+}
+
+/* Base Font Settings */
+body {
+    font-family: 'Inter', sans-serif; /* Default body font */
+    cursor: auto; /* Show default cursor */
+}
+
+/* Headings Font Settings */
+h1, h2, h3, h4, h5, h6, .section-title, .card-title {
+    font-family: 'Playfair Display', serif; /* Heading font */
+}
+
+/* Hero Title Specific Font (Montserrat) */
+.hero-title {
+    font-family: 'Montserrat', sans-serif; /* Menggunakan Montserrat */
+    font-weight: 800; /* Bold */
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* Slightly wider */
+    margin-bottom: 0.75rem;
+    color: white;
+    line-height: 1.2;
+    /* Ukuran font disesuaikan agar tidak terlalu besar */
+    font-size: 1.75rem; /* Mobile default: ~28px */
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    .hero-title {
+        font-size: 2.25rem; /* ~36px */
+    }
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .hero-title {
+        font-size: 2.75rem; /* ~44px */
+    }
+}
+@media (min-width: 1024px) { /* lg breakpoint */
+    .hero-title {
+        font-size: 3.5rem; /* ~56px */
+    }
+}
+
+
+/* Gaya untuk Hero Section yang Diperbarui */
+.hero-section-adjusted {
+    height: 100vh;
+    background-size: cover; /* Pastikan gambar mengisi seluruh area */
+    position: relative;
+    /* Default untuk Mobile: Teks di bawah, gambar digeser ke atas agar wajah di tengah */
+    background-position: center 30%; /* Menggeser gambar ke atas (fokus 30% dari atas) */
+    /* Untuk penggunaan satu gambar: 'images/DSC09397.jpg' */
+}
+/* Jika Anda memiliki gambar khusus untuk mobile */
+/* .hero-section-adjusted {
+    background-image: url('images/hero-mobile.jpg');
+} */
+
+
+.hero-overlay-adjusted {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay default untuk mobile */
+}
+.hero-content-wrapper {
+    position: relative;
+    z-index: 10;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* Mobile: Konten di bawah, tengah horizontal, DIATASKAN SEDIKIT */
+    flex-direction: column;
+    justify-content: flex-end; /* Konten ke bawah */
+    align-items: center; /* Konten ke tengah horizontal */
+    padding-bottom: 8rem; /* Ditingkatkan ke atas (misal dari 4rem jadi 8rem) untuk mobile */
+    text-align: center;
+}
+
+/* Media Query untuk Tablet (ukuran antara 768px dan 1023px, breakpoint md Tailwind) */
+@media (min-width: 768px) {
+    .hero-section-adjusted {
+        /* background-image: url('images/hero-tablet.jpg'); /* Jika ada gambar khusus tablet */
+        background-position: center center; /* Wajah di tengah untuk tablet */
+    }
+    .hero-overlay-adjusted {
+        /* Gradien overlay default untuk tablet */
+        background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.0) 100%);
+    }
+    .hero-content-wrapper {
+        padding-bottom: 0; /* Kembali ke padding default atau sesuai kebutuhan tablet */
+    }
+}
+
+/* Media Query untuk Desktop (ukuran 1024px ke atas, breakpoint lg Tailwind) */
+@media (min-width: 1024px) {
+    .hero-section-adjusted {
+        /* background-image: url('images/hero-desktop.jpg'); /* Jika ada gambar khusus desktop */
+        background-position: 70% center; /* Wajah/subjek lebih ke kanan agar teks di kiri tidak menutupi */
+    }
+    .hero-overlay-adjusted {
+        /* Gradien overlay untuk desktop, lebih gelap di kiri tempat teks */
+        background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.0) 70%, rgba(0,0,0,0) 100%);
+    }
+    .hero-content-wrapper {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding-bottom: 0;
+        text-align: left;
+    }
+}
+
+
+/* Gaya Umum untuk Kartu dan Item Galeri */
+.package-card, .testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.package-card:hover, .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Gaya untuk gambar di Swiper dan efek zoom */
+.swiper-slide img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 100%;
+    transition: transform 0.3s ease; /* Transisi untuk efek zoom */
+}
+.gallery-item:hover img {
+    transform: scale(1.05); /* Zoom in effect on hover */
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar Logo Adjustment */
+.navbar-logo-img {
+    height: 30px;
+    margin-right: 8px;
+}
+
+/* Swiper Navigation Custom Styles */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--color-mustard-gold); /* Menggunakan warna dari palet baru */
+}
+.swiper-pagination-bullet-active {
+    background: var(--color-mustard-gold); /* Menggunakan warna dari palet baru */
+}
+
+/* Section Title Styling */
+.section-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    text-align: center;
+    margin-bottom: 3rem; /* mb-12 */
+    color: #ea580c; /* amber-600 */
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    .section-title {
+        font-size: 2.5rem; /* Adjust as needed */
+    }
+}
+@media (min-width: 1024px) { /* lg breakpoint */
+    .section-title {
+        font-size: 3rem; /* Adjust as needed */
+    }
+}
+
+
+.hero-subtitle {
+    font-size: 1.125rem; /* Default mobile: 18px */
+    margin-bottom: 1.5rem;
+    color: #e5e7eb; /* gray-200 */
+}
+@media (min-width: 640px) { /* sm */
+    .hero-subtitle {
+        font-size: 1.25rem; /* ~20px */
+    }
+}
+@media (min-width: 768px) { /* md */
+    .hero-subtitle {
+        font-size: 1.25rem; /* ~20px */
+    }
+}
+
+/* Card Titles */
+.card-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+
+
+/* Styles for Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+.modal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6b7280; /* gray-500 */
+}
+.modal-close-button:hover {
+    color: #1f2937; /* gray-900 */
+}
+@media (min-width: 768px) {
+    .modal-content {
+        max-width: 600px; /* Lebar maksimum di desktop */
+    }
+}
+
+/* Skeleton Screen Styles */
+.skeleton {
+    animation: pulse 1.5s infinite ease-in-out;
+    background: linear-gradient(-90deg, #f0f0f0 0%, #f8f8f8 50%, #f0f0f0 100%);
+    background-size: 200% 100%;
+}
+@keyframes pulse {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+.gallery-item.loading img {
+    display: none; /* Sembunyikan gambar asli saat loading */
+}
+.gallery-item .skeleton-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #e0e0e0; /* Warna dasar placeholder */
+    display: block; /* Pastikan placeholder terlihat */
+}
+.gallery-item:not(.loading) .skeleton-placeholder {
+    display: none; /* Sembunyikan placeholder setelah gambar dimuat */
+}
+
+/* Cursor is now default, custom cursor styles removed */
+body {
+    cursor: auto; /* Ensure default cursor is shown after custom cursor removal */
+}
+
+/* Penyesuaian warna untuk filter button agar sesuai palet baru */
+.filter-button.active {
+    background-color: var(--color-terracotta); /* Menggunakan warna terakota untuk filter aktif */
+    color: white;
+}
+.filter-button:not(.active) {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #374151; /* gray-800 */
+}
+.filter-button:not(.active):hover {
+    background-color: #d1d5db; /* gray-300 */
+}
+
+/* Penyesuaian warna untuk tombol "Lihat Detail" di Paket */
+.package-card span.bg-amber-500 {
+    background-color: var(--color-terracotta); /* Menggunakan terakota */
+}
+.package-card:hover span.bg-amber-500 {
+    background-color: var(--color-burnt-orange); /* Oranye kemerahan saat hover */
+}
+
+/* Floating Chat Button Styles */
+.floating-contact-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 900;
+    display: flex;
+    flex-direction: column; /* Mengubah ini menjadi 'column' agar ikon sosial berada di atas tombol */
+    align-items: flex-end;
+    gap: 0.75rem; /* Jarak antara ikon sosial dan tombol utama */
+    transition: all 0.3s ease-out;
+}
+
+.floating-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden; /* Penting untuk animasi ikon */
+    order: 2; /* Agar tombol utama selalu di bawah (order 2) */
+}
+
+/* Efek hover pada tombol utama */
+.floating-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Ikon dalam tombol utama */
+.floating-button .chat-icon,
+.floating-button .close-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.floating-button .chat-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.floating-button .close-icon {
+    opacity: 0;
+    transform: rotate(-90deg); /* Mulai dari rotasi -90deg agar animasinya bagus saat masuk */
+}
+
+/* Saat kontainer aktif, ganti ikon tombol utama */
+.floating-contact-container.active .floating-button .chat-icon {
+    opacity: 0;
+    transform: rotate(90deg); /* Keluar dengan rotasi 90deg */
+}
+
+.floating-contact-container.active .floating-button .close-icon {
+    opacity: 1;
+    transform: rotate(0deg); /* Masuk tanpa rotasi */
+}
+
+
+.floating-social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    transform: translateY(20px); /* Mulai tersembunyi di bawah */
+    pointer-events: none;
+    order: 1; /* Agar ikon sosial di atas tombol (order 1) */
+}
+
+/* Saat kontainer aktif, tampilkan ikon sosial */
+.floating-contact-container.active .floating-social-icons {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.floating-social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-social-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments for floating button */
+@media (max-width: 640px) {
+    .floating-chat-container {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        gap: 0.5rem;
+    }
+    .floating-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    .floating-social-link {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive adjustments for floating button */
+@media (max-width: 640px) {
+    .floating-chat-container {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        gap: 0.5rem;
+    }
+    .floating-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    .floating-social-link {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+}

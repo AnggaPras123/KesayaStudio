@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesaya Studio - Abadikan Momenmu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-gray-900 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+        <a href="#" class="flex items-center">
+            <img src="images/LOGO-KESAYA.png" alt="Logo Kesaya Studio" class="navbar-logo-img">
+            <span class="text-2xl font-bold text-amber-400 hover:text-amber-300">KESAYA STUDIO</span>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-4">
+            <div class="flex space-x-4">
+                <a href="#beranda" class="text-gray-300 hover:text-white">Beranda</a>
+                <a href="#tentang-kami" class="text-gray-300 hover:text-white">Tentang Kami</a>
+                <a href="#layanan-kami" class="text-gray-300 hover:text-white">Layanan Kami</a>
+                <a href="#portofolio" class="text-gray-300 hover:text-white">Portofolio</a>
+                <a href="#paket" class="text-gray-300 hover:text-white">Paket</a>
+                <a href="#testimoni" class="text-gray-300 hover:text-white">Testimoni</a>
+                <a href="#hubungi-kami" class="text-gray-300 hover:text-white">Hubungi Kami</a>
+            </div>
+            <div class="flex items-center space-x-4 ml-4">
+                <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="text-gray-300 hover:text-white" aria-label="Instagram Kesaya Studio">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
+                <a href="https://wa.me/6285235541965" target="_blank" class="text-gray-300 hover:text-white" aria-label="WhatsApp Kesaya Studio">
+                    <i class="fab fa-whatsapp fa-lg"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="md:hidden flex items-center space-x-3">
+            <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="text-gray-300 hover:text-white" aria-label="Instagram Kesaya Studio">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="https://wa.me/6285235541965" target="_blank" class="text-gray-300 hover:text-white" aria-label="WhatsApp Kesaya Studio">
+                <i class="fab fa-whatsapp fa-lg"></i>
+            </a>
+            <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-800 shadow-lg">
+        <a href="#beranda" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-home mr-2"></i>Beranda</a>
+        <a href="#tentang-kami" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-info-circle mr-2"></i>Tentang Kami</a>
+        <a href="#layanan-kami" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-handshake mr-2"></i>Layanan Kami</a>
+        <a href="#portofolio" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-images mr-2"></i>Portofolio</a>
+        <a href="#paket" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-box-open mr-2"></i>Paket</a>
+        <a href="#testimoni" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-comment-alt mr-2"></i>Testimoni</a>
+        <a href="#hubungi-kami" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"><i class="fas fa-phone-alt mr-2"></i>Hubungi Kami</a>
+    </div>
+</nav>
+
+    <section id="beranda"
+        class="hero-section-adjusted"
+        style="background-image: url('images/DSC09397.jpg');">
+        <div class="hero-overlay-adjusted"></div>
+        <div class="container mx-auto px-6 hero-content-wrapper">
+            <div class="w-full md:w-1/2 lg:w-2/5" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="hero-title">
+                    <span id="typed-text"></span><br>
+                </h1>
+                <p class="hero-subtitle">
+                    Fotografi & Videografi Profesional
+                </p>
+                <a href="#layanan-kami" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-6 md:py-3 md:px-8 rounded-lg text-sm md:text-base transition duration-300 inline-block shadow-lg">
+                    LIHAT LAYANAN
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang-kami" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="section-title" data-aos="fade-up">Tentang Kami</h2>
+            <div class="max-w-3xl mx-auto text-lg text-gray-700 space-y-4" data-aos="fade-up" data-aos-delay="200">
+                <p>Kesaya studio adalah rumah kreatif dibidang fotografi dan vidiografi yang berfokus pada keindahan moment, ekspresi, dan cerita.</p>
+                <p>Dengan semangat untuk menghadirkan karya visual yang autentik dan estetik, kami melayani berbagai kebutuhan dokumentasi, mulai dari personal hingga komersial.</p>
+                <p>Kami percaya bahwa setiap momen memiliki cerita. Tugas kami adalah menangkapnya dengan sudut pandang yang berbeda, penuh rasa, dan kualitas visual yang memukau.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="layanan-kami" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Kami siap mendokumentasikan momen berharga Anda, mulai dari acara spesial seperti pernikahan dan lamaran, hingga kebutuhan personal dan komersial.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center package-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-camera-retro fa-3x"></i>
+                    </div>
+                    <h3 class="card-title">Fotografi</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>Prewedding dan wedding</li>
+                        <li>Potrait (personal, keluarga, wisuda)</li>
+                        <li>Foto produk dan komersial</li>
+                        <li>Event dan dokumentasi acara</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center package-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-video fa-3x"></i>
+                    </div>
+                    <h3 class="card-title">Videografi</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>Cinematik wedding dan prewedding</li>
+                        <li>Video produk dan branding</li>
+                        <li>Video event dan dokumentasi kegiatan</li>
+                        <li>Company profil dan video campaign</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center package-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-amber-500 mb-4">
+                        <i class="fas fa-edit fa-3x"></i>
+                    </div>
+                    <h3 class="card-title">Editing dan Produksi</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>Retouching foto profesional</li>
+                        <li>Video editing (highlight, cinematic, reel)</li>
+                        <li>Warna dan suara berkualitas tinggi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title" data-aos="fade-up">Portofolio Kami</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Lihat beberapa hasil karya terbaik kami. Untuk lebih banyak lagi, kunjungi Instagram kami!</p>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-button bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-5 rounded-lg transition duration-300 active" data-category="all">Semua</button>
+                <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-5 rounded-lg transition duration-300" data-category="wedding">Wedding</button>
+                <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-5 rounded-lg transition duration-300" data-category="engagement">Engagement</button>
+                <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-5 rounded-lg transition duration-300" data-category="portrait">Portrait</button>
+            </div>
+
+            <div class="swiper mySwiper" data-aos="fade-up" data-aos-delay="300">
+                <div class="swiper-wrapper" id="portfolio-gallery">
+                    <div class="swiper-slide gallery-item rounded-lg overflow-hidden loading" data-category="wedding">
+                        <div class="skeleton-placeholder skeleton"></div>
+                        <img src="images/1749023520026.jpg" alt="Portofolio Kesaya Studio 1">
+                    </div>
+                    <div class="swiper-slide gallery-item rounded-lg overflow-hidden loading" data-category="engagement">
+                        <div class="skeleton-placeholder skeleton"></div>
+                        <img src="images/1749023520038.jpg" alt="Portofolio Kesaya Studio 2">
+                    </div>
+                    <div class="swiper-slide gallery-item rounded-lg overflow-hidden loading" data-category="portrait">
+                        <div class="skeleton-placeholder skeleton"></div>
+                        <img src="images/1749023520046.jpg" alt="Portofolio Kesaya Studio 3">
+                    </div>
+                    <div class="swiper-slide gallery-item rounded-lg overflow-hidden loading" data-category="product">
+                        <div class="skeleton-placeholder skeleton"></div>
+                        <img src="images/1749023520055.jpg" alt="Portofolio Kesaya Studio 4">
+                    </div>
+                    <div class="swiper-slide gallery-item rounded-lg overflow-hidden loading" data-category="wedding">
+                        <div class="skeleton-placeholder skeleton"></div>
+                        <img src="images/1749023520062.jpg" alt="Portofolio Kesaya Studio 5">
+                    </div>
+                    <div class="swiper-slide gallery-item rounded-lg overflow-hidden loading" data-category="engagement">
+                        <div class="skeleton-placeholder skeleton"></div>
+                        <img src="images/1749023520072.jpg" alt="Portofolio Kesaya Studio 6">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 inline-flex items-center">
+                    <i class="fab fa-instagram mr-2"></i> Lihat Lebih Banyak di Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="paket" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title" data-aos="fade-up">Paket Spesial Untuk Momen Berhargamu</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="package-list">
+                </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title" data-aos="fade-up">Apa Kata Klien Kami</h2>
+            <div class="swiper testimonialSwiper" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"Hasil fotonya luar biasa! Tim Kesaya Studio sangat profesional dan ramah. Momen pernikahan kami terabadikan dengan sempurna."</p>
+                        <p class="font-semibold text-amber-600">- Amanda & Rizky</p>
+                        <p class="text-sm text-gray-500">Klien Pernikahan</p>
+                    </div>
+                    <div class="swiper-slide testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"Sesi foto wisuda saya jadi sangat berkesan. Fotografernya kreatif dan bisa mengarahkan gaya dengan baik. Recommended!"</p>
+                        <p class="font-semibold text-amber-600">- Budi Santoso</p>
+                        <p class="text-sm text-gray-500">Klien Wisuda</p>
+                    </div>
+                    <div class="swiper-slide testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"Untuk kebutuhan foto produk, Kesaya Studio memberikan hasil yang memuaskan. Detail produk terlihat jelas dan menarik."</p>
+                        <p class="font-semibold text-amber-600">- Cantika (Owner Batik Lestari)</p>
+                        <p class="text-sm text-gray-500">Klien Foto Produk</p>
+                    </div>
+                    <div class="swiper-slide testimonial-card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"Pelayanan Kesaya Studio sangat responsif dan hasil videonya melebihi ekspektasi. Pasti akan menggunakan lagi!"</p>
+                        <p class="font-semibold text-amber-600">- David Pratama</p>
+                        <p class="text-sm text-gray-500">Klien Event</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hubungi-kami" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">Siap mengabadikan momen spesial Anda bersama Kesaya Studio? Jangan ragu untuk menghubungi kami untuk konsultasi lebih lanjut atau penjadwalan.</p>
+            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-gray-700 mb-6 text-lg">Klik tombol di bawah untuk langsung terhubung dengan kami melalui WhatsApp:</p>
+                <a href="https://wa.me/6285235541965" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                    <i class="fab fa-whatsapp mr-3 fa-lg"></i> Hubungi via WhatsApp
+                </a>
+                <div class="mt-8">
+                    <p class="text-gray-700 mb-2">Temukan kami juga di Instagram:</p>
+                    <p class="text-gray-700"><i class="fab fa-instagram mr-2 text-amber-600"></i> <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="hover:underline">@kesayastudio</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="text-gray-400 hover:text-white mx-2" aria-label="Instagram Kesaya Studio">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                 <a href="https://wa.me/6285235541965" target="_blank" class="text-gray-400 hover:text-white mx-2" aria-label="WhatsApp Kesaya Studio">
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 KESAYA STUDIO. Semua Hak Dilindungi.</p>
+            <p class="text-sm text-gray-500 mt-1">Didesain dengan <i class="fas fa-heart text-red-500"></i> untuk Momen Berharga Anda</p>
+        </div>
+    </footer>
+
+    <div id="package-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-button" class="modal-close-button">&times;</button>
+            <h3 id="modal-package-name" class="text-3xl font-bold text-amber-600 mb-4"></h3>
+            <p id="modal-package-price" class="text-2xl font-semibold text-gray-800 mb-6"></p>
+            <div id="modal-package-details" class="text-gray-700 space-y-4 mb-8">
+                </div>
+            <a id="modal-whatsapp-button" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                <i class="fab fa-whatsapp mr-3 fa-lg"></i> Pesan via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <div class="floating-contact-container">
+        <div id="floating-social-icons" class="floating-social-icons">
+            <a href="https://wa.me/6285235541965" target="_blank" class="floating-social-link bg-green-500 hover:bg-green-600 text-white shadow-lg" aria-label="WhatsApp Kesaya Studio">
+                <i class="fab fa-whatsapp fa-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/kesayastudio/" target="_blank" class="floating-social-link bg-pink-600 hover:bg-pink-700 text-white shadow-lg" aria-label="Instagram Kesaya Studio">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+        </div>
+        <button id="floating-chat-button" class="floating-button bg-amber-500 hover:bg-amber-600 text-white shadow-lg">
+            <i class="fas fa-comments chat-icon"></i>
+            <i class="fas fa-times close-icon"></i>
+        </button>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
